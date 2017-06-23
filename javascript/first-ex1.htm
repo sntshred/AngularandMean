@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<title>
+			FIRST JAVASCRIPT APP
+		</title>
+	</head>
+	<body>
+		ENTER SOME TEXT:
+		<input type="text" id="id1" 
+			onkeyup="makeBinding()"/>
+		<br><br>
+		<label id="v1"></label>
+		<script>
+			function makeBinding(){
+				var model = document.getElementById("id1");
+				var view = document.getElementById("v1");
+				view.innerHTML = model.value;
+			}
+		</script>
+	</body>
+</html>

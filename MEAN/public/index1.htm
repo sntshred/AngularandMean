@@ -1,0 +1,88 @@
+<html>
+	<body ng-app="ajaxApp" ng-controller="mainCtrl">
+		<div style="float:left;">
+			<table border=1>
+				<tr>
+					<th colspan=4>ITEM DETAILS</th>
+				</tr>
+				<tr>
+					<th>ID</th>
+					<th>NAME</th>
+					<th>YEAR</th>
+					<th>&nbsp;</th>
+				</tr>
+				<tr ng-repeat="item in items">
+					<td>{{item.id}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.year}}</td>
+					<td><button ng-click="viewItem(item)">VIEW</button></td>
+				</tr>
+			</table>
+		</div>
+		<div style="float:left;">
+			<table>
+				<tr>
+					<td>ID</td>
+					<td><input type="text" ng-model="currentItem.id"/></td>
+				</tr>
+				<tr>
+					<td>NAME</td>
+					<td><input type="text" ng-model="currentItem.name"/></td>
+				</tr>
+				<tr>
+					<td>YEAR</td>
+					<td><input type="text" ng-model="currentItem.year"/></td>
+				</tr>
+				<tr>
+					<td>GRAPES</td>
+					<td><input type="text" ng-model="currentItem.grapes"/></td>
+				</tr>
+				<tr>
+					<td>COUNTRY</td>
+					<td><input type="text" ng-model="currentItem.country"/></td>
+				</tr>
+				<tr>
+					<td>REGION</td>
+					<td><input type="text" ng-model="currentItem.region"/></td>
+				</tr>
+				<tr>
+					<th><button ng-click="updateItem(currentItem)">INSERT</button></th>
+					<th><button ng-click="deleteItem(currentItem)">DELETE</button></th>
+				</tr>
+			</table>
+		</div>
+		<script src="javascripts/angular.min.js"></script>
+		<script>
+			angular.module("ajaxApp", [])
+			.controller("mainCtrl", function($scope, $http){
+				$scope.items = [];
+				$http.get("users/getItems")
+				.then(
+					function(payload){
+						$scope.items = payload.data;
+					},
+					function(rejMsg){
+						$scope.errMsg = rejMsg;
+					}
+				);
+				$scope.viewItem = function(item){
+					alert(JSON.stringify(item));
+					$scope.currentItem = item;
+				};
+				$scope.updateItem = function(currentItem){
+					$http.post("users/insertItem", currentItem)
+					.then(
+						function(payload){
+							alert(payload.data);
+							$scope.items = payload.data;
+						},
+						function(rejMsg){
+							alert(rejMsg);
+							$scope.errMsg = rejMsg;
+						}
+					);
+				};
+			});
+		</script>
+	</body>
+</html>

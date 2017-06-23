@@ -1,0 +1,13 @@
+<html>
+	<body>
+		ENTER TEXT : <input type="text" id="m1"/>
+		<br/>
+		VIEW TEXT : <label id="v1"></label>
+		<script src="../lib/jquery-2.2.0.min.js"></script>
+		<script>
+			$("#m1").keyup(function(){
+				$("#v1").text($("#m1").val());
+			});
+		</script>
+	</body>
+</html>

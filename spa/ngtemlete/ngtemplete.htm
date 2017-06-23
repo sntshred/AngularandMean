@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+	<body>
+		<script src="tpl/ng.menu.tpl" type="text/ng-template"></script>
+		<mainmenu></mainmenu>       
+		<script src="../angular-1.3.14/angular.js"></script>
+		<script>
+			angular.module('myApp',['myApp.directives']);
+			var myModule = angular.module('myApp.directives', []);
+			myModule.directive('mainmenu', function() {
+				return {
+					restrict:'E',
+					replace:true,
+					templateUrl:'tpl/ng.menu.tpl'
+				}
+			});
+		</script>
+	</body> 
+</html>

@@ -1,0 +1,25 @@
+<html>
+	<body ng-app="myApp" ng-controller="factorialCtrl">
+		ENTER NUMBER : <input type="number" ng-model="a">
+		<br/><br/>
+		ENTER NUMBER : <input type="number" ng-model="b">
+		<br/>
+		<button ng-click="getFactorial()">GET FACTORIAL</BUTTON>
+		<button ng-click="getSum()">GET SUM</BUTTON>
+		<button ng-click="getSub()">GET SUB</BUTTON>
+		<button ng-click="getMul()">GET MUL</BUTTON>
+		<button ng-click="getDiv()">GET DIV</BUTTON>
+		<button ng-click="getSquare(b)">GET SQUARE</BUTTON>
+		<hr/>
+		FACTORIAL RESULT : <label ng-bind="result"></label>
+		<hr/>
+		<label ng-bind="resultType"></label> : <label ng-bind="arthResult"></label>
+		<hr/>
+		SQUARE RESULT : <label ng-bind="sResult"></label>
+		<script src="../lib/angular-1.3.14/angular.min.js"></script>
+		<script src="js/myApp.js"></script>
+		<script src="js/factorialModule.js"></script>
+		<script src="js/arthModule.js"></script>
+		<script src="js/squareModule.js"></script>
+	</body>
+</html>

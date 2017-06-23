@@ -1,0 +1,48 @@
+<html>
+	<body ng-app="myApp" ng-controller='myCtrl'>
+		<div align='center'>
+			<a href='#' ng-click="spa('view/registration.pl')">
+				REGISTRATION PAGE
+			</a> |
+			<a href='#' ng-click="spa('view/login.pl')">
+				LOGIN
+			</a> |
+			<a href='#' ng-click="spa('view/about1.pl')">
+				ABOUT
+			</a>
+		</div>
+		<hr/>
+		<div ng-include='container.page' align='center'></div>
+		<script type='text/ng-template' id='view/about1.pl'>
+			I CREATED ABOUT US PAGE AS JAVASCRIPT TEMPLATE OBJECT
+		</script>
+		<script src="../lib/angular-1.3.14/angular.min.js"></script>
+		<script>
+			angular.module('myApp',[])
+			.controller('myCtrl',function($scope, $rootScope){
+				$scope.container = {
+					page : 'view/registration.pl'
+				};
+				$scope.spa = function(url){
+					$scope.container.page = url;
+				};
+			})
+			.controller('login',function($scope,$rootScope){
+				$scope.user = $rootScope.reg;
+				$scope.submit = function(){
+					$scope.container.page = 'view/about.pl';
+				};
+			})
+			.controller('registration',function($scope,$rootScope){
+				$rootScope.reg = {
+					uid : "",
+					pwd : ""
+				};
+				$scope.submit = function(){
+					//alert("submit called");
+					$scope.container.page = 'view/login.pl';
+				};
+			});
+		</script>
+	</body>
+</html>

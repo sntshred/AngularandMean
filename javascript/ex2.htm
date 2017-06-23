@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<title>JAVASCRIPT APP</title>
+	</head>
+	<body>
+		ENTER TEXT : 
+		<input type="text" id="id1" 
+		onkeyup="getText()"/>
+		<br>
+		<br>
+		<span id="v1">
+			HERE CONTENT SHOULD DISPLAY
+		</span>
+		<script>
+			function getText(){
+				var modelObj = 
+					document.getElementById("id1");
+				var viewObj = 
+					document.getElementById("v1");
+				viewObj.innerHTML=modelObj.value;
+			}
+		</script>
+	</body>
+</html>

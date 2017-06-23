@@ -1,0 +1,21 @@
+<html>
+	<body ng-app="serviceApp" ng-controller="mathCtrl">
+		ENTER A NUMBER : <input type="number" ng-model="math.a"/>
+		<br/>
+		ENTER B NUMBER : <input type="number" ng-model="math.b"/>
+		<br/>
+		<button ng-click="sum(math)"> + </button> |
+		<button ng-click="sub(math)"> - </button> |
+		<button ng-click="mul(math)"> * </button> |
+		<button ng-click="div(math)"> / </button> |
+		<button ng-click="square()"> square </button> |
+		<button ng-click="factorial()"> factorial </button>
+		<hr/>
+		RESULT : {{result}}
+		<script src="../lib/angular-1.4.9/angular.min.js"></script>
+		<script src="js/serviceApp.js"></script>
+		<script src="js/factoryServiceModule.js"></script>
+		<script src="js/serviceModule.js"></script>
+		<script src="js/providerModule.js"></script>
+	</body>
+</html>

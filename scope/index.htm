@@ -1,0 +1,22 @@
+<html ng-app="scopeExample">
+	<head>
+		<script src="../js/angular.min.js"></script>
+		<script src="js/script.js"></script>
+		<link href="css/style.css" 
+		rel="stylesheet" type="text/css"/>
+	</head>
+	<body>
+		<div class="show-scope-demo">
+			<div ng-controller="GreetController">
+				Hello {{name}}!
+			</div>
+			<div ng-controller="ListController">
+				<ol>
+					<li ng-repeat="name in names">
+						{{name}} from {{department}}
+					</li>
+				</ol>
+			</div>
+		</div>
+	</body>
+</html>

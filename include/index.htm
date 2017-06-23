@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<title>Angular JS Includes</title>
+		<script src="../lib/angular-1.3.14/angular.js"></script>
+		<style>
+			table, th , td {
+				border: 1px solid grey;
+				border-collapse: collapse;
+				padding: 5px;
+			}
+			table tr:nth-child(odd) {
+				background-color: #f2f2f2;
+			}
+			table tr:nth-child(even) {
+				background-color: #ffffff;
+			}
+		</style>		
+	</head>
+	<body ng-app="myApp">
+		<script type="text/ng-template" id="main.htm">
+			THIS IS MAIN.HTM JAVASCRIPT OBJECT
+		</script>
+		<script type="text/ng-template" id="subjects.htm">
+			THIS IS MAIN.HTM JAVASCRIPT OBJECT
+		</script>
+		<h2>AngularJS Sample Application</h2>
+		<div ng-controller="studentController">
+			<div ng-include="'main.htm'"></div>
+			<div ng-include="'subjects.htm'"></div>
+		</div>
+		<script>
+			var app = angular.module("myApp",[]);
+			app.controller("studentController",
+				function($scope){
+				$scope.student = {
+					firstName: "Naresh",
+					lastName: "I Technologies",
+					fees:500,
+					subjects:[
+						{name:'Physics',marks:80},
+						{name:'Chemistry',marks:82},
+						{name:'Math',marks:84},
+						{name:'English',marks:86},
+						{name:'Hindi',marks:88}
+					],
+					fullName: function() {
+						var studentObject;
+						studentObject = $scope.student;
+						return studentObject.firstName + " " + studentObject.lastName;
+					}
+				};
+			});
+		</script>		
+	</body>
+</html>
+
+
+ 

@@ -1,0 +1,48 @@
+<html>
+	<body ng-app="multiCtrlApp">
+		<div ng-controller="first-ctrl" style="border:1px solid red; padding:10px;">
+			MESSAGE : <input type="text" ng-model="message" ng-change="onChange()"></input>
+			<div ng-controller="second-ctrl" style="border:1px solid green; padding:10px;">
+				MESSAGE : <input type="text" ng-model="message" ng-change="onChange()"></input>
+				<div ng-controller="third-ctrl" style="border:1px solid blue; padding:10px;">
+					MESSAGE : <input type="text" ng-model="message" ng-change="onChange()"></input>
+				</div>
+			</div>
+		</div>
+		<script src="../lib/angular-1.4.9/angular.min.js"></script>
+		<script>
+			angular.module("multiCtrlApp", [])
+			.controller("first-ctrl", function($scope){
+				$scope.message = "INITIALIZED IN first-ctrl";
+				$scope.onChange = function(){
+					$scope.$broadcast("toChaild", $scope.message);
+				};
+				$scope.$on("toParent", function(events, data){
+					$scope.message = data;
+				});
+			})
+			.controller("second-ctrl", function($scope){
+				//$scope.message = "INITIALIZED IN first-ctrl";
+				$scope.$on("toChaild", function(events, data){
+					$scope.message = data;
+				});
+				$scope.$on("toParent", function(events, data){
+					$scope.message = data;
+				});
+				$scope.onChange = function(){
+					$scope.$broadcast("toChaild", $scope.message);
+					$scope.$emit("toParent", $scope.message);
+				};
+			})
+			.controller("third-ctrl", function($scope){
+				//$scope.message = "INITIALIZED IN first-ctrl";
+				$scope.$on("toChaild", function(events, data){
+					$scope.message = data;
+				});
+				$scope.onChange = function(){
+					$scope.$emit("toParent", $scope.message);
+				};
+			});
+		</script>
+	</body>
+</html>

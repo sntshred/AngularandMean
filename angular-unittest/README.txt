@@ -1,0 +1,27 @@
+PLEASE FALLOW THE BELOW LINK TO FIND INSTALLATION OF KARMA
+
+http://blog.jdriven.com/2013/05/easy-installation-of-karma-testacular-test-runner-on-windows/
+
+AFTER SUCCESSFULL INSTALLATION OPEN COMMAND
+
+GOTO PROJECT DIRECTORY LIKE BELOW:
+
+ASSUME PROJECT LOCATION D:/anglar
+
+d:
+cd angular
+d:\angular>
+
+NOW USE FALLOWING COMMANDS TO CREATE KARMA CONFIGURATION
+
+karma init --> IT WILL CREATE karma.conf.js file
+
+OR
+
+karma init projectname.conf.js --> IT WILL CREATE 							   projectname.conf.js FILE
+
+PROVIDE CORRENT ANSWERS TO THE QUESTIONS
+
+ONCE SUCCESSFULLY karma configuration FILE CREATED USE THE BELOW COMMAND
+
+karma start "CONFIGURATION FILE NAME"

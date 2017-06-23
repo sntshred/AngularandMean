@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<title>
+			provider example
+		</title>
+		<script src="angular-1.3.14/angular.js"></script>
+		<script src="js/fact-script.js"></script>
+		<style>
+			table, th , td  {
+				border: 1px solid grey;
+				border-collapse: collapse;
+				padding: 5px;
+			}
+			table tr:nth-child(odd)	{
+				background-color: #f1f1f1;
+			}
+			table tr:nth-child(even) {
+				background-color: #ffffff;
+			}
+		</style>
+	</head>
+	<body>
+		<div ng-app="myApp">
+			<div ng-controller="MyCtrl">
+				<table>
+					<tr>
+						<td>
+							EMP ID
+						</td>
+						<td>
+							FIRST NAME
+						</td>
+						<td>
+							LAST NAME
+						</td>
+						<td>
+							SALARY
+						</td>
+					</tr>
+					<tr ng-repeat="emp in employees">
+						<td>
+							{{emp.empId}}
+						</td>
+						<td>
+							{{emp.firstName}}
+						</td>
+						<td>
+							{{emp.lastName}}
+						</td>
+						<td>
+							{{emp.salary | currency:"&#8377;"}}
+						</td>
+					</th>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<script src="../lib/angular-1.3.14/angular.js"></script>
+	</head>
+	<body ng-app>
+		<form name="myForm" novalidate>
+			USER ID : <input type="email" name="nuid" id="iuid" ng-model="email"
+			pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" required/>
+			<span ng-bind="email"></span>
+			<span id="euid" style="color:red;"
+			ng-show="myForm.nuid.$dirty&&
+					myForm.nuid.$invalid">
+				<span ng-show="myForm.nuid.$error.required">
+					USER ID IS REQUIRED		
+				</span>
+				<span ng-show="myForm.nuid.$error.email">
+					PROVIDE PROPER MAIL ID		
+				</span>
+			</span>
+			<br/>
+			PASSWORD : <input type="password" name="npwd" id="ipwd"  ng-model="password" required/>
+			<span id="euid" style="color:red;"
+				ng-show="myForm.npwd.$dirty&&
+					myForm.npwd.$invalid">
+				PASSWORD IS REQUIRED			
+			</span>
+			<br/>
+			<input type="submit" value="submit"/>
+		</form>
+		<script>
+			function validate(){
+				//alert("wrw");
+				var form=document.myForm;
+				if(form.nuid.value==""){
+					//alert("user");
+					document.getElementById("euid").style.display="block";
+					return false;
+				}
+				if(form.npwd.value==""){
+					document.getElementById("epwd").style.display="block";
+					return false;
+				}
+				return true;
+			}
+		</script>
+	</body>
+</html>

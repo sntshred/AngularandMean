@@ -1,0 +1,77 @@
+<html>
+	<body ng-app="ngRouteApp">
+		<div align="center">
+			<a ng-href="#/registration">registration</a> |
+			<a ng-href="#/login">login</a> |
+			<a ng-href="#/home">home</a> 
+		</div>
+		<hr/>
+		<div align="center" ng-view></div>
+		<script src="../lib/angular-1.4.9/angular.min.js"></script>
+		<script src="../lib/angular-1.4.9/angular-route.min.js"></script>
+		<script>
+			angular.module("ngRouteApp", ["ngRoute"])
+			.config(function($routeProvider){
+				$routeProvider
+				.when("/registration", {
+					templateUrl : "view/registration.pl",
+					controller : "regCtrl"
+				})
+				.when("/login/:uid/:pwd", {
+					templateUrl : "view/login.pl",
+					controller : "loginCtrl"
+				})
+				.when("/home", {
+					templateUrl : "view/home.pl"
+				})				
+			})
+			.controller("regCtrl", function($scope, $location){
+				$scope.reg = {
+					uid : "",
+					pwd : ""
+				};
+				$scope.errMsg = "";
+				$scope.submit = function(){
+					var flag = true;
+					if($scope.reg.uid === ""){
+						flag = false;
+						$scope.errMsg = "USER ID IS MANDATORY";
+					}
+					else if($scope.reg.pwd === ""){
+						flag = false;
+						$scope.errMsg = "PASSWORD IS MADATORY";
+					}
+					else{
+						flag = true;
+						$scope.errMsg = "";
+						var url = "/login/"+$scope.reg.uid+"/"+$scope.reg.pwd;
+						$location.path(url);
+					}
+				};
+			})
+			.controller("loginCtrl", function($scope, $routeParams, $location){
+				$scope.user = {
+					uid : "",
+					pwd : ""
+				};
+				$scope.errMsg = "";
+				$scope.submit = function(){
+					var flag = true;
+					if($routeParams.uid !== $scope.user.uid){
+						flag = false;
+						$scope.errMsg = "USER ID IS WRONG";
+					}
+					else if($routeParams.pwd !== $scope.user.pwd){
+						flag = false;
+						$scope.errMsg = "PASSWORD IS WRONG";
+					}
+					else{
+						flag = true;
+						$scope.errMsg = "";
+						$location.path("/home");
+					}
+				};
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<title>
+			Number Divisor
+		</title>
+		<script type="text/javascript" 
+			src="../lib/angular-1.3.14/angular.min.js">
+		</script>
+	</head>
+	<body>
+		<form ng-controller="DivisionController">
+			<label>Number :</label>
+			<input name="number" 
+				ng-change="divisionNeeded()" 
+				ng-model="data.number">
+			<label>Number entered by User :</label>
+			{{data.number}}
+			<br>
+			<label>Divisor :</label>
+			<input name="divisor" 
+			ng-change="divisionNeeded()" 
+			ng-model="data.divisor">
+			<label>Number entered by User :</label>
+			{{data.divisor}}
+			<br>
+			<label>Result :</label>
+			{{data.result}}
+		</form>
+	</body>
+	<script>
+		//REGISTERING OUR MODULE WITH ANGULAR
+		var app = angular.module("myApp",[]);
+		//REGISTERING OUR CONTROLLER
+		app.controller("DivisionController", 
+						function($scope){
+			//MODEL
+			$scope.data = {
+				number: 0,
+				divisor: 0,
+				result: 0
+			};
+			//FUNCTION
+			$scope.divisionNeeded = function(){
+				$scope.data.result = 
+				$scope.data.number / 
+				$scope.data.divisor;
+			}
+		});
+	</script>
+</html>
+
+
+
+

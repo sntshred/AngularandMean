@@ -1,0 +1,26 @@
+<html>
+	<body ng-app="myApp" ng-controller="myCtrl">
+		<my-app-dir></my-app-dir>
+		<script src="../lib/angular-1.4.9/angular.min.js"></script>
+		<script>
+			angular.module("myApp", [])
+			.directive("myAppDir", function($compile){
+				return {
+					restrict : "EA",
+					template : "<h3><center>THIS IS MY CUSTOM DIRECTIVE</center></h3><hr/><div align='center'>{{message}}</div>",
+					link: function(scope, ele, attr){
+						var element = angular.element("<button ng-click='changeMessage()'>CLICK ME</button>");
+						element = $compile(element)(scope);
+						ele.append(element);
+					}
+				}
+			})
+			.controller("myCtrl", function($scope){
+				$scope.message = "Hi every one";
+				$scope.changeMessage = function(){
+					$scope.message = "Bye every one";
+				};
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+
+<html>
+	<body ng-app="myApp" ng-controller="myCtrl">
+		SELECT KEY : 
+		<select ng-model="mySubject" ng-options="subject as subject.name for subject in subjects">
+			<option value="">SELECT KEY</option>
+		</select>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		SELECT VALUE : 
+		<select ng-model="mySubject" ng-options="subject as subject.marks for subject in subjects">
+			<option value="">SELECT VALUE</option>
+		</select>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+		<script>
+			angular.module("myApp",[])
+			.controller("myCtrl",function($scope){
+				$scope.subjects = [
+					{name:'Maths',marks:'82'},
+					{name:'Biology',marks:'84'},
+					{name:'Physics',marks:'86'},
+					{name:'1st Language',marks:'88'},
+					{name:'2nd Language',marks:'90'}
+				];
+			});
+		</script>
+	</body>
+</html>

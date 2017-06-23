@@ -1,0 +1,72 @@
+<html>
+	<body ng-app="myApp" ng-controller="myCtrl">
+		<table align='center' border=1>
+			<tr>
+				<th colspan=2>STUDENT DETAILS</th>
+			</tr>
+			<tr>
+				<td>FIRST NAME</td>
+				<td>{{student.firstName | uppercase}}</td>
+			</tr>
+			<tr>
+				<td>LAST NAME</td>
+				<td>{{student.lastName | lowercase}}</td>
+			</tr>
+			<tr>
+				<td>ROLL NO</td>
+				<td>{{student.rollNo}}</td>
+			</tr>
+			<tr>
+				<td>FULL NAME</td>
+				<td>{{student.fullName() | uppercase}}</td>
+			</tr>
+			<tr>
+				<td>FEES</td>
+				<td>{{student.qty * student.price | currency}}</td>
+			</tr>
+			<tr>
+				<td>ENTER FILTER TEXT</td>
+				<td><input type="text" ng-model="filterText" style="background:yellow;"/></td>
+			</tr>
+			<tr>
+				<td>SUBJECT NAME</td>
+				<td>SUBJECT MARKS</td>
+			</tr>
+			<tr ng-repeat="subject in student.subjects | filter : filterText | orderBy : '-marks'">
+				<td>{{subject.name}}</td>
+				<td>{{subject.marks}}</td>
+			</tr>
+		</table>
+		<script src="../lib/angular-1.4.9/angular.min.js"></script>
+		<script>
+			angular.module("myApp", [])
+			.controller("myCtrl", function($scope){
+				$scope.student = {
+					firstName : 'Naresh',
+					lastName : 'Student',
+					rollNo : 1001,
+					fullName : function(){
+						return $scope.student.firstName + " " + $scope.student.lastName;
+					},
+					qty : 16,
+					price : 79.00,
+					subjects : [
+						{name : 'Java', marks : 98},
+						{name : '.Net', marks : 67},
+						{name : 'PHP', marks : 87},
+						{name : 'Android', marks : 74},
+						{name : 'IOS', marks : 56},
+						{name : 'Javascript', marks : 85},
+						{name : 'Node', marks : 83},
+						{name : 'Angular', marks : 73},
+						{name : 'Ruby', marks : 81},
+						{name : 'Rails', marks : 72},
+						{name : 'c', marks : 45},
+						{name : 'c++', marks : 46},
+						{name : 'Require', marks : 49}
+					]
+				};
+			});
+		</script>
+	</body>
+</html>

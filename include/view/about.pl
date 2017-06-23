@@ -1,0 +1,2 @@
+THIS IS ABOUT US TEMPLATE<br/>
+USER DETAILS : {{reg}}

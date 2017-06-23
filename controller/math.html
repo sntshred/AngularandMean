@@ -1,0 +1,71 @@
+<html>
+	<body data-ng-app="mathApp">
+		<div ng-controller="mathCtrl">
+			<h3>mathCtrl VIEW</h3>
+			ENTER NUMBER A : <input type="number" data-ng-model="a"/>
+			<br/>
+			ENTER NUMBER B : <input type="number" data-ng-model="b"/>
+			<br/>
+			<button data-ng-click="sum(a, b)"> + </button> |
+			<button data-ng-click="sub(a, b)"> - </button> |
+			<button data-ng-click="mul(a, b)"> * </button> |
+			<button data-ng-click="div(a, b)"> / </button>
+			<hr/>
+			RESULT : <input type="text" data-ng-model="result"/>
+		</div>
+		<hr/>
+		<div ng-controller="arthCtrl">
+			<h3>arthCtrl VIEW</h3>
+			ENTER NUMBER A : <input type="number" data-ng-model="a"/>
+			<br/>
+			ENTER NUMBER B : <input type="number" data-ng-model="b"/>
+			<br/>
+			<button data-ng-click="sum(a, b)"> + </button> |
+			<button data-ng-click="sub(a, b)"> - </button> |
+			<button data-ng-click="mul(a, b)"> * </button> |
+			<button data-ng-click="div(a, b)"> / </button>
+			<hr/>
+			RESULT : <input type="text" data-ng-model="result"/>
+		</div>
+		<script src="../lib/angular-1.4.9/angular.min.js"></script>
+		<script>
+			angular.module("mathApp", [])
+			.controller("mathCtrl", function($scope, $rootScope){
+				$rootScope.a = 0;
+				$rootScope.b = 0;
+					
+				$scope.result = 0;
+				$scope.sum = function(a, b){
+					$scope.result = a + b;
+				};
+				$scope.sub = function(a, b){
+					$scope.result = a - b;
+				};
+				$scope.mul = function(a, b){
+					$scope.result = a * b;
+				};
+				$scope.div = function(a, b){
+					$scope.result = a / b;
+				};
+			})
+			.controller("arthCtrl", function($scope, $rootScope){
+				$rootScope.a = 15;
+				$rootScope.b = 3;
+				
+				$scope.result = 0;
+				$scope.sum = function(a, b){
+					$scope.result = a + b;
+				};
+				$scope.sub = function(a, b){
+					$scope.result = a - b;
+				};
+				$scope.mul = function(a, b){
+					$scope.result = a * b;
+				};
+				$scope.div = function(a, b){
+					$scope.result = a / b;
+				};
+			});
+		</script>
+	</body>
+</html>

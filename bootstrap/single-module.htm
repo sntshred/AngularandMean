@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<title>
+			SINGLE MODULE ANGULAR-JS APP
+		</title>
+		<script src="../lib/angular-1.3.14/angular.min.js"></script>
+		
+		<script src="js/about.js"></script>
+		<script src="js/service.js"></script>
+		<script src="js/contact.js"></script>
+		<script src="js/myApp.js"></script>
+	</head>
+	<body>
+		<div id="myApp1" ng-app="myApp1" 
+				ng-controller="myCtrl" ng-strict-di>
+			<label ng-bind="myApp1Model"></label>
+		</div>
+		<div id="myApp2" ng-app="myApp2">
+			<div ng-controller="aboutCtrl" align="center">
+				<b>ABOUT CONTROLLER</b>
+				<br/>
+				ENTER TEXT: <input type="text" ng-model="am1">
+				<br/>
+				SHOW TEXT : <label ng-bind="am1"></label>
+			</div>
+			<hr/>
+			<div ng-controller="serviceCtrl" align="center">
+				<b>SERVICE CONTROLLER</b>
+				<br/>
+				ENTER TEXT: <input type="text" ng-model="sm1">
+				<br/>
+				SHOW TEXT : <label ng-bind="sm1"></label>
+			</div>
+			<hr/>
+			<div ng-controller="contactCtrl" align="center">
+				<b>CONTACT CONTROLLER</b>
+				<br/>
+				ENTER TEXT: <input type="text" ng-model="cm1">
+				<br/>
+				SHOW TEXT : <label ng-bind="cm1"></label>
+			</div>
+		</div>
+	</body>
+</html>

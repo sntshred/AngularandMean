@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<title>
+			ng-view example
+		</title>
+		<script src="angular-1.3.14/angular.js"></script>
+		<script src="angular-1.3.14/angular-route.js"></script>
+		<script src="js/ngview.js"></script>
+		<script src="js/rootCtrl.js"></script>
+		<script src="js/AboutCtrl.js"></script>
+		<script src="js/ServicesCtrl.js"></script>
+		<script src="js/ContactCtrl.js"></script>
+	</head>
+	<body>
+		<div ng-app="ngViewExampleApp">
+			<a href="#/">Root</a> | 
+			<a href="#/about">About</a> | 
+			<a href="#/services">Services</a> |
+			<a href="#/contact">Contact</a>
+			<!-- CONTAINER -->
+			<div ng-view></div>
+		</div>
+	</body>
+</html>

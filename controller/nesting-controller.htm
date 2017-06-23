@@ -1,0 +1,51 @@
+<html>
+	<body ng-app="nestingApp">
+		<div style="border:1px solid red;" ng-controller="ctrl1">
+			CTRL1 TEXT : <input type="text" ng-model="message" ng-keyup="toChaild()"/>
+			<div style="border:1px solid green; margin:15px;" ng-controller="ctrl2">
+				CTRL2 TEXT : <input type="text" ng-model="message" ng-keyup="toParent()"/>
+				<div style="border:1px solid blue; margin:15px;" ng-controller="ctrl3">
+					CTRL3 TEXT : <input type="text" ng-model="message" ng-keyup="toParent()"/>
+				</div>
+			</div>
+		</div>
+		<script src="../lib/angular-1.4.9/angular.min.js"></script>
+		<script>
+			angular.module("nestingApp", [])
+			.controller("ctrl1", function($scope){
+				 $scope.message = "INSIDE CTRL1";
+				 $scope.toChaild = function(){
+					$scope.$broadcast("parentToChaild", $scope.message);
+				 };
+				 $scope.$on("chaildToParent",
+					function(events, data){
+					$scope.message = data;
+				});
+			})
+			.controller("ctrl2", function($scope){
+				$scope.toParent = function(){
+					$scope.$emit("chaildToParent", $scope.message);
+					$scope.$broadcast("parentToChaild", $scope.message);
+				};
+				$scope.$on("parentToChaild",
+					function(events, data){
+					$scope.message = data;
+				});
+				$scope.$on("chaildToParent",
+					function(events, data){
+					$scope.message = data;
+				});
+			})
+			.controller("ctrl3", function($scope){
+				$scope.toParent = function(){
+					$scope.$emit("chaildToParent", $scope.message);
+					$scope.$broadcast("parentToChaild", $scope.message);
+				};
+				$scope.$on("parentToChaild",
+					function(events, data){
+					$scope.message = data;
+				});
+			});
+		</script>
+	</body>
+</html>

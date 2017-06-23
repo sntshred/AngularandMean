@@ -1,0 +1,46 @@
+<html>
+	<body ng-app="myApp" ng-strict-di>
+		<div ng-controller="myCtrl1">
+			<input type="text" ng-model="user.fn"/>
+			<br/><br/>
+			<input type="text" ng-model="user.ln"/>
+			<button ng-click="swapname()">SWAP</button>
+		</div>
+		<hr/>
+		<div ng-controller="myCtrl2">
+			<button ng-click="fullname()">FULL NAME</button>
+			<br/>
+			RESULT : <label ng-bind="result"></label>
+		</div>
+		
+		<script src="../lib/angular-1.3.14/angular.min.js"></script>
+		<script>
+			function myFun($rootScope){
+				$rootScope.user.fn = "Vikram";
+				$rootScope.user.ln = "Naidu";
+				$rootScope.fullname = function(){
+					$rootScope.result = $rootScope.user.fn + " " + $rootScope.user.ln;
+				};
+			};
+			
+			myFun.$inject = ["$rootScope"];
+			
+			angular.module("myApp", [])
+			.controller("myCtrl1", ["$rootScope", function($rootScope){
+				$rootScope.user = {
+					fn : "",
+					ln : ""
+				};
+				
+				$rootScope.swapname = function(){
+					console.log("before swap :: ",$rootScope.user);
+					var temp = $rootScope.user.fn;
+					$rootScope.user.fn = $rootScope.user.ln;
+					$rootScope.user.ln = temp;
+					console.log("after swap :: ",$rootScope.user);
+				};
+			}])
+			.controller("myCtrl2", myFun);
+		</script>
+	</body>
+</html>

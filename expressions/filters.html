@@ -1,0 +1,72 @@
+<html>
+	<body ng-app="myApp" ng-controller="myCtrl">
+		<table>
+			<tr>
+				<th colspan=2>STUDENT DETAILS</th>
+			</tr>
+			<tr>
+				<td>FIRST NAME</td>
+				<td>{{student.firstName}}</td>
+			</tr>
+			<tr>
+				<td>LAST NAME</td>
+				<td>{{student.lastName}}</td>
+			</tr>
+			<tr>
+				<td>ROLL NO</td>
+				<td>{{student.rollNo}}</td>
+			</tr>
+			<tr>
+				<td>FULL NAME</td>
+				<td>{{student.fullName() | uppercase}}</td>
+			</tr>
+			<tr>
+				<td>FEE</td>
+				<td>{{student.qty * student.price | currency:'&#8377;'}}</td>
+			</tr>
+			<tr>
+				<th colspan=1>SUBJECTS</th>
+			</tr>
+			<tr>
+				<td>ENTER FILTER TEXT</td>
+				<td><input typ="text" ng-model="filterText"/></td>
+			</tr>
+			<tr ng-repeat="subject in student.subjects | filter:filterText | orderBy:'name'">
+				<td>{{subject.name}}</td>
+				<td>{{subject.marks}}</td>
+			</tr>
+		</table>
+		<hr/>
+		EXPRESSION : {{student}}
+		<hr/>
+		DIRECTIVE : <label ng-bind="student | json"></label>
+		<script src="../lib/angular-1.3.14/angular.min.js"></script>
+		<script>
+			angular.module("myApp", [])
+			.controller("myCtrl", function($scope){
+				$scope.student = {
+					firstName : "Naresh",
+					lastName : "Student",
+					fullName : function(){
+						return $scope.student.firstName + " " + $scope.student.lastName;
+					},
+					rollNo : 1001,
+					qty : 16,
+					price : 13.34,
+					subjects : [
+						{name: 'maths', marks: 56},
+						{name: 'physics', marks: 45},
+						{name: 'chemistry', marks: 67},
+						{name: 'telugu', marks: 89},
+						{name: 'english', marks: 78},
+						{name: 'hindhi', marks: 98},
+						{name: 'social', marks: 43},
+						{name: 'history', marks: 34},
+						{name: 'zoology', marks: 74},
+						{name: 'biology', marks: 62}
+					]
+				};
+			});
+		</script>
+	</body>
+</html>

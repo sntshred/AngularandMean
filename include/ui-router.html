@@ -1,0 +1,60 @@
+<html>
+	<body ng-app="uiRouterApp">
+		<!-- root Links -->
+		<div align="center">
+			<a href ui-sref="about">ABOUT</a> |
+			<a href ui-sref="dashboard">DASHBOARD</a>
+		</div>
+		<hr/>
+		<!-- parent container -->
+		<div ui-view></div>
+		<script src="../lib/angular-1.4.9/angular.min.js"></script>
+		<script src="../lib/angular-ui-router.min.js"></script>
+		<script>
+			angular.module("uiRouterApp", ["ui.router"])
+			.config(function($stateProvider){
+				$stateProvider
+				.state("about", {
+					templateUrl : "view/about.htm"
+				})
+				.state("about.md", {
+					template : "THIS MANAGING DIRECTOR PAGE"
+				})
+				.state("about.fd", {
+					template : "THIS FINANCE DIRECTOR PAGE"
+				})
+				.state("about.sd", {
+					template : "THIS SALES DIRECTOR PAGE"
+				})
+				.state("about.mkd", {
+					template : "THIS MARKETING DIRECTOR PAGE"
+				})
+				.state("dashboard", {
+					views : {
+						"" : {
+							templateUrl : "view/dashboard.htm"
+						},
+						"a@dashboard" : {
+							template : "THIS IS FIRST REPORT"
+						},
+						"b@dashboard" : {
+							template : "THIS IS SECOUND REPORT"
+						},
+						"c@dashboard" : {
+							template : "THIS IS THIRD REPORT"
+						},
+						"d@dashboard" : {
+							template : "THIS IS FOURTH REPORT"
+						},
+						"e@dashboard" : {
+							template : "THIS IS FIVE REPORT"
+						},
+						"f@dashboard" : {
+							template : "THIS IS SIX REPORT"
+						}
+					}
+				});
+			})
+		</script>
+	</body>
+</html>

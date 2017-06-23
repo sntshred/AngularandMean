@@ -1,0 +1,36 @@
+<html>
+	<body ng-app="formValidationApp" ng-controller="myCtrl">
+		<form name="myForm" ng-submit="validate()" novalidate>
+			ENTER EMAIL ID : <input type="email" ng-model="user.mail" required/>
+			<div ng-bind="mailErr" style="color:red;"></div>
+			<br/><br/>
+			ENTER MOBILE NO: <input type="number" ng-model="user.no" required/>
+			<div style="color:red;"></div>
+			<br/>
+			<button>SUBMIT</button>
+		</form>
+		<script src="../lib/angular-1.4.9/angular.min.js"></script>
+		<script>
+			angular.module("formValidationApp", [])
+			.controller("myCtrl", function($scope){
+				$scope.user = {
+					mail : "",
+					no : ""
+				};
+				$scope.validate = function(){
+					//change this regular exp as per email id
+					var regEx=/[a-z]._/;
+					if($scope.user.mail === ""){
+						$scope.mailErr = "Email ID is mandatory";
+					}
+					else if(!regEx.test($scope.user.mail)){
+						$scope.mailErr = "Please provide valid Email ID";
+					}
+					else{
+						$scope.mailErr = "";
+					}
+				};
+			});
+		</script>
+	</body>
+</html>

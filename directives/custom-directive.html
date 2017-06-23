@@ -1,0 +1,28 @@
+<html>
+	<body ng-app="myApp">
+		<div my-app-dir></div>
+		<script src="../lib/angular-1.4.9/angular.min.js"></script>
+		<script>
+			angular.module("myApp", [])
+			.directive("myAppDir", function(){
+				var myObject = {};
+				myObject.restrict = "A";
+				myObject.template = "THIS IS MY CUSTOM DIRECTIVE";
+				myObject.link = function(scope, element, attr){
+					alert("hi this is called after loading");
+				};
+				myObject.compile = function(scope, element){
+					return {
+						pre : function(){
+							alert("before");
+						},
+						post: function(){
+							alert("hi this is called after loading");
+						}
+					}
+				};
+				return myObject;
+			});
+		</script>
+	</body>
+</html>

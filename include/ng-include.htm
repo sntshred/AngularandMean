@@ -1,0 +1,41 @@
+<html>
+	<body ng-app="ngIncludeApp">
+		<div align="center" ng-controller="mainCtrl">
+			<a href="#" ng-click="spa('view/registration.pl')">
+				REGISTRATION
+			</a> |
+			<a href="#" ng-click="spa('view/login.pl')">LOGIN</a> |
+			<a href="#" ng-click="spa('view/home.pl')">HOME</a>
+		</div>
+		<div ng-include="page" align="center" ng-controller="subCtrl"></div>
+		<script src="../lib/angular-1.3.14/angular.min.js"></script>
+		<script>
+			angular.module("ngIncludeApp", [])
+			.controller("mainCtrl", function($scope, $rootScope){
+				$rootScope.page = "";
+				$scope.spa = function(url){
+					//alert(url +" loading..");
+					$rootScope.page = url;
+				};
+			})
+			.controller("subCtrl", function($scope, $rootScope){
+				$rootScope.reg = {
+					uid : "",
+					pwd : ""
+				};
+				$scope.user = {
+					uid : "",
+					pwd : ""
+				};
+				$rootScope.page = "";
+				$scope.rsubmit = function(){
+					$scope.user = $rootScope.reg;
+					$rootScope.page = "view/login.pl";
+				};
+				$scope.lsubmit = function(){
+					$rootScope.page = "view/home.pl";
+				};
+			});
+		</script>
+	</body>
+</html>

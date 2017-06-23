@@ -1,0 +1,60 @@
+<html>
+	<body ng-app="studentApp" ng-controller="dbCtrl">
+		<table border=1>
+			<tr>
+				<th colspan=3>STUDENT DETAILS</th>
+			</tr>
+			<tr>
+				<td>ROLL NO</td>
+				<td>FIRST NAME</td>
+				<td>LAST NAME</td>
+			</tr>
+			<tr ng-repeat = "s in students">
+				<td>{{s.rollNo}}</td>
+				<td>{{s.firstName}}</td>
+				<td>{{s.lastName}}</td>
+			</tr>
+		</table>
+		<div>
+			<form ng-submit="submit()">
+				<h3>STUDENT FORM</h3>
+				<div ng-show="status">{{message}}</div>
+				ENTER FIRST NAME : <input type="text" ng-model="student.firstName"/>
+				<br/>
+				ENTER LAST NAME : <input type="text" ng-model="student.lastName"/>
+				<br/>
+				ENTER ROLL NO : <input type="number" ng-model="student.rollNo"/>
+				<br/>
+				<button>SUBMIT</button>
+			</form>
+		</div>
+		<script src="javascripts/angular.min.js"></script>
+		<script>
+			angular.module("studentApp", [])
+			.controller("dbCtrl", function($scope, $http){
+				$scope.students = [];
+				$scope.student = {
+					rollNo : 0,
+					firstName : "",
+					lastName : ""
+				};
+				$scope.status = false;
+				$scope.message = "";
+				$scope.submit = function(){
+					var url = "users/insertStudent";
+					$http.post(url, $scope.student)
+					.success(function(response){
+						$scope.students = response;
+						$scope.status = true;
+						$scope.message = "Student data inserted successfully..!";
+					})
+					.error(function(xhr, status){
+						alert("error status code : "+status);
+						$scope.status = true;
+						$scope.message = "Student data insertion is failed..!";
+					});
+				};
+			});
+		</script>
+	</body>
+</html>

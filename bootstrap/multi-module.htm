@@ -1,0 +1,33 @@
+<html>
+	<body ng-app="app2">
+		<div id="div1" ng-init="message='I am model object in app1';">
+			<label ng-bind="message"/>
+		</div>
+		<div id="div2" ng-controller="myCtrl">
+			<label ng-bind="message"/>
+		</div>
+		<script src="../lib/angular-1.3.14/angular.min.js"></script>
+		<script>
+			//angular.module("app1", []);//angular.bootstrap(document, ['app1', 'app2']);
+			
+			angular.module("app2", ["app3"])
+			.controller("myCtrl", function($scope, myOwnService){
+				$scope.message = "I am model object in myCtrl";
+				myOwnService.callMe($scope.message);
+			});
+			
+			angular.module("app3", [])
+			.service("myOwnService", function(){
+				this.callMe = function(message){
+					alert("i'm called and message is "+message);
+				};
+			});
+			
+			/*var dom1 = document.getElementById('div1');
+			var dom2 = document.getElementById('div2');
+			angular.bootstrap(dom1, ['app1']);
+			angular.bootstrap(dom2, ['app2']);*/
+			//angular.bootstrap(document, ['app1', 'app2']);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<html ng-app="myApp">
+	<head>
+		<script src="../lib/angular-1.3.14/angular.js"></script>
+		<script type="text/javascript">
+			var myApp = angular.module('myApp', []);
+		</script>
+		<script type="text/ng-template"
+			id="view/about.pl">
+			THIS IS ABOUT US TEMPLATE LOADING TRHOUGH SCRIPT OBJECT
+		</script>
+	</head>
+	<body>
+		<div align="center">
+			<a ng-href="#" ng-click="myLink='view/about.pl'">
+				ABOUT US
+			</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a ng-href="#" ng-click="myLink='view/login.pl'">
+				LOGIN PAGE
+			</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a ng-href="#" ng-click="myLink='view/registration.pl'">
+				REGISTRATION PAGE
+			</a>
+		</div>
+		<hr/>
+		<div ng-include="myLink"></div>
+	</body>
+</html>

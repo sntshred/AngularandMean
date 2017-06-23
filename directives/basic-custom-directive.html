@@ -1,0 +1,49 @@
+<html>
+	<body ng-app="myApp" ng-controller="myCtrl">
+		<my-own-dir></my-own-dir> <!-- myOwnDir -->
+		<hr/>
+		<my-own-dir></my-own-dir>
+		<script src="../lib/angular-1.3.14/angular.min.js"></script>
+		<script>
+			angular.module("myApp", [])
+			.directive("myOwnDir", function($compile){
+				return {
+					restrict : "E",
+					template : "{{message.key}} AM {{message.value}}",
+					link : function(scope, ele, attr){
+						var element = angular.element("<button ng-click='call(message.value)'>CLICK ME</button>");
+						$compile(element)(scope);
+						ele.append(element);
+						
+					},
+					/*controller : function($scope){
+						$scope.message1 = {
+							"key" : "I",
+							"value" : "TRAINER AT NARESH IT"
+						};
+						$scope.message2 = {
+							"key" : "I",
+							"value" : "STUDENT AT NARESH IT"
+						};
+						$scope.call = function(value){
+							alert(value);
+						};
+					}*/
+				};
+			})
+			.controller("myCtrl", function($scope){
+				$scope.message = {
+					"key" : "I",
+					"value" : "TRAINER AT NARESH IT"
+				};
+				$scope.message2 = {
+					"key" : "I",
+					"value" : "STUDENT AT NARESH IT"
+				};
+				$scope.call = function(value){
+					alert(value);
+				};
+			});
+		</script>
+	</body>
+</html>

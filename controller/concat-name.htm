@@ -1,0 +1,20 @@
+<html ng-app="myApp">
+	<body ng-controller="myCtrl">
+		ENTER FIRST NAME : <input type="text" ng-model="fn"/>
+		<br/>
+		ENTER LAST NAME : <input type="text" ng-model="ln"/>
+		<br/>
+		<button ng-click="getFullName()">GET FULL NAME</button>
+		<hr/>
+		RESULT : <label ng-bind="fullName"></label>
+		<script src="../lib/angular-1.4.9/angular.min.js"></script>
+		<script>
+			var app = angular.module('myApp', []);
+			app.controller("myCtrl", function($scope){
+				$scope.getFullName = function(){
+					$scope.fullName = $scope.fn + " " + $scope.ln;
+				};
+			});
+		</script>
+	</body>
+</html>

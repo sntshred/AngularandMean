@@ -1,0 +1,28 @@
+<select ng-options="item.subItem as item.label 
+		for item in values track by item.id" 
+		ng-model="selected"></select>
+<br/><br/>
+<from>
+	<table>
+		<tr>
+			<th colspan="2">LOGIN FORM</th>
+		</tr>
+		<tr>
+			<td>USER ID</td>
+			<td><input type="text" ng-model="login.uid"/></td>
+		</tr>
+		<tr>
+			<td>PASSWORD</td></td>
+			<td><input type="password" ng-model="login.pwd"/></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2">
+				<button ng-click="validate()">
+					SUBMIT
+				</button>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="reset" value="RESET"/>
+			</td>
+		</tr>
+	</table>
+</form>

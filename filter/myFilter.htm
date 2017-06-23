@@ -1,0 +1,22 @@
+<html>
+	<body ng-app="myApp" ng-init="message = 'Vikram';">
+		MY CUSTOM FILTER : {{message | reverse:'Naidu'}}
+		<script src="../lib/angular-1.3.14/angular.min.js"></script>
+		<script>
+			angular.module("myApp", [])
+			.filter("reverse", function(){
+				return function(text, ext){
+					//text = text + ext;
+					console.log("input : ", text);
+					var result = "";
+					for(var i = 0; i < ext.length; i++){
+						result = ext.charAt(i) + result;
+						console.log("output : ", result);
+					}
+					//alert(result);
+					return text + " " + result;
+				}
+			});
+		</script>
+	</body>
+</html>

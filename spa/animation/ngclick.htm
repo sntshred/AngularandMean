@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<link href="css/custom.css" rel="stylesheet" type="text/css"/>
+		<script src="../angular-1.3.14/angular.js"></script>
+		<script src="../angular-1.3.14/angular-animate.js"></script>
+	</head>
+	<body ng-app="myApp">
+		<P>
+			<button ng-click="myview='inject-class'">Add</button>
+			<button ng-click="myview=''">Remove</button>
+		</p>
+		<br>
+		<span ng-class="myview">THIS IS ANIMATED TEXT</span>
+		<script>
+			angular.module('myApp',['ngAnimate']);
+		</script>
+	</body>
+</html>

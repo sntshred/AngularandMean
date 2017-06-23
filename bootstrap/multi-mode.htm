@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<script src="../js/angular.min.js"></script>		
+	</head>
+	<body onload="load()">
+		<div ng-app="div1" ng-init="count1=1;">
+			<h1>DIV1 MODULE DATA IS {{count1}}</h1>
+		</div>
+		<div id="d2" ng-app="div2" ng-init="count2=2;">
+			<h1>DIV2 {{count2}}</h1>
+		</div>
+		<div id="d3" ng-app="div3" ng-init="count3=2;">
+			<h1>DIV3 NEW NG-APP {{count3}}</h1>
+		</div>
+		<script>
+			angular.module("div1",[]);
+			angular.module("div2",[]);
+			angular.module("div3",[]);
+			angular.bootstrap(document, ['div1','div2','div3']);
+			/*function load(){
+				alert("hold");
+				angular.bootstrap(document.getElementById("d2"),['div2']);
+				angular.bootstrap(document.getElementById("d3"),['div3']);
+			};*/
+		</script>
+	</body>
+</html>

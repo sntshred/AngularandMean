@@ -1,0 +1,22 @@
+[
+	{
+		"Name" : "Naresh IT Student 1",
+		"RollNo" : 101,
+		"Percentage" : "80%"
+	},
+	{
+		"Name" : "Naresh IT Student 2",
+		"RollNo" : 201,
+		"Percentage" : "70%"
+	},
+	{
+		"Name" : "Naresh IT Student 3",
+		"RollNo" : 301,
+		"Percentage" : "75%"
+	},
+	{
+		"Name" : "Naresh IT Student 4",
+		"RollNo" : 401,
+		"Percentage" : "77%"
+	}
+]

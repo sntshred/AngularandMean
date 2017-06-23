@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Angular+JQ+Bootstrap - jsFiddle demo</title>
+  
+  <script type='text/javascript' src='../js/angular.min.js'></script>
+  
+   
+  
+  <style type='text/css'>
+    
+  </style>
+  
+</head>
+<body>
+  <div id="app1">
+    <span ng-controller="ctrl">
+        <input ng-model="one">{{one}}
+    </span>
+</div>
+<div id="app2">
+    <span ng-controller="ctrl">
+        <input ng-model="two">{{two}}
+    </span>
+</div>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+
+angular.module('app1',[]).controller('ctrl', function($scope) {
+    $scope.one = '1';
+});
+angular.module('app2',[]).controller('ctrl', function($scope) {
+    $scope.two = '2';
+});
+
+
+angular.bootstrap(document.getElementById('app1'), ['app1']);
+angular.bootstrap(document.getElementById('app2'), ['app2']);
+
+//]]>  
+
+</script>
+
+
+</body>
+
+
+</html>
+

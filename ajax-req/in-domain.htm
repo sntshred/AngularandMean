@@ -1,0 +1,34 @@
+<html>
+	<body ng-app="inDomainApp">
+		<table ng-controller="myCtrl" align='center' border=1>
+			<tr>
+				<th colspan=3>STUDENT DETAILS</th>
+			</tr>
+			<tr>
+				<td>NAME</td>
+				<td>ROLL NO</td>
+				<td>PERCENTAGE</td>
+			</tr>
+			<tr ng-repeat="s in students">
+				<td>{{s.Name}}</td>
+				<td>{{s.RollNo}}</td>
+				<td>{{s.Percentage}}</td>
+			</tr>
+		</table>
+		<script src="../lib/angular-1.4.9/angular.min.js"></script>
+		<script>
+			angular.module("inDomainApp", [])
+			.controller("myCtrl", function($scope, $http){
+				$scope.students = [];
+				var url = "data/student.json";
+				$http.get(url)
+				.success(function(response){
+					$scope.students = response;
+				})
+				.error(function(xhr, status){
+					alert(status);
+				});
+			});
+		</script>
+	</body>
+</html>s

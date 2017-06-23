@@ -1,0 +1,23 @@
+<html>
+	<body ng-app="arthApp" ng-controller="arthCtrl">
+		ENTER A NUMBER : <input type="number" id="a" ng-model="a"/>
+		<br/><br/>
+		ENTER B NUMBER : <input type="number" id="b" ng-model="b"/>
+		<br/><br/>
+		<button ng-click="add(a, b)">+</button>
+		<button ng-click="sub(a, b)">-</button>
+		<button ng-click="mul(a, b)">*</button>
+		<button ng-click="div(a, b)">/</button>
+		<hr/>
+		RESULT : <label id="result" ng-bind="result"></label>
+		<hr/>
+		FACTORIAL OF A : <label ng-bind="fa"></label>
+		<hr/>
+		FACTORIAL OF B : <label ng-bind="fb"></label>
+		<script src="../lib/angular-1.3.14/angular.min.js"></script>
+		<script src="js/arthApp.js"></script>
+		<script src="js/factoryModule.js"></script>
+		<script src="js/serviceModule.js"></script>
+		<script src="js/providerModule.js"></script>
+	</body>
+</html>

@@ -1,0 +1,14 @@
+.row.ng-enter, .row.ng-leave {
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+.row.ng-enter, .row.ng-leave.ng-leave-active {
+	line-height: 0;
+	opacity: 0;
+}
+.row.ng-leave, .row.ng-enter.ng-enter-active {
+	line-height: 30px;
+	opacity: 1;
+}

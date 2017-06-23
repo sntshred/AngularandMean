@@ -1,0 +1,36 @@
+<html>
+	<body onload="init()">
+		<div align="center">
+			<a href="#" onclick="spa('about')">
+				ABOUT US
+			</a> |
+			<a href="#" onclick="spa('service')">
+				SERVICES
+			</a> |
+			<a href="#" onclick="spa('contact')">
+				CONTACT US
+			</a>
+		</div>
+		<hr/>
+		<div id="about" align="center">
+			===THIS IS ABOUT US PAGE===
+		</div>
+		<div id="service" align="center">
+			===THIS IS SERVICES PAGE===
+		</div>
+		<div id="contact" align="center">
+			===THIS IS CONTACT US PAGE===
+		</div>
+		<script>
+			function init(){
+				document.getElementById('about').style.display = 'none';
+				document.getElementById('service').style.display = 'none';
+				document.getElementById('contact').style.display = 'none';
+			};
+			function spa(id){
+				init();
+				document.getElementById(id).style.display = 'block';
+			};
+		</script>
+	</body>
+</html>

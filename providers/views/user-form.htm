@@ -1,0 +1,62 @@
+<button class="btn btn-success" ng-click="newEmployee()">
+	<span class="glyphicon glyphicon-user"></span>
+	Create New User
+</button>
+<hr/>
+<h3 ng-show="nemp.edit">Create New Employee:</h3>
+<h3 ng-hide="nemp.edit || !nemp.delete">Update Employee:</h3>
+<h3 ng-show="!nemp.delete">Delete Employee:</h3>
+
+<form class="form-horizontal">
+	<div class="form-group">
+		<label class="col-sm-2 control-label">
+			Employee ID:
+		</label>
+		<div class="col-sm-10">
+			<input type="text" ng-model="nemp.eid" 
+				ng-disabled="!nemp.edit" placeholder="Employee ID">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">
+			First Name:
+		</label>
+		<div class="col-sm-10">
+			<input type="text" ng-model="nemp.fn" 
+				ng-disabled="!nemp.delete" placeholder="First Name">
+			<span ng-bind="nemp.fn"></span>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">
+			Last Name:
+		</label>
+		<div class="col-sm-10">
+			<input type="text" ng-model="nemp.ln" 
+				ng-disabled="!nemp.delete" placeholder="Last Name">
+			<span ng-bind="nemp.ln"></span>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">
+			Salary:
+		</label>
+		<div class="col-sm-10">
+			<input type="text" ng-model="nemp.sal" 
+				ng-disabled="!nemp.delete" placeholder="Salary">
+			<span ng-bind="nemp.sal"></span>
+		</div>
+	</div>
+</form>
+<hr />
+<button class="btn btn-success" 
+		ng-hide="!nemp.delete" ng-disabled="nemp.error || nemp.incomplete" ng-click="save()">
+	<span class="glyphicon glyphicon-save"></span>
+	Save Changes
+</button>
+
+<button class="btn btn-success" 
+		ng-show="!nemp.delete" ng-click="delete()">
+	<span class="glyphicon glyphicon-save"></span>
+	Delete Employee
+</button>

@@ -1,0 +1,26 @@
+<div class="container">
+	<!-- HEADER AND TODO COUNT -->
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-4">
+			<h2 class="text-center">Total todos list : {{ vm.todosList.length }}</h2>
+			<input type="text" class="form-control" ng-model="vm.filterText" placeholder="Search for todo list..">
+			<!-- LOOP OVER THE TODOS IN $scope.todos -->
+			<div ng-repeat="todos in vm.todosList | filter : {'listName' : vm.filterText}">
+				<label>
+					<input type="radio" name="todoListName" ng-click="vm.selectTodo(todos)"> {{todos.listName}}
+				</label>
+			</div>
+			<!--<button class="btn btn-primary" ng-click="vm.viewTodo('view')">View</button>-->
+		</div>
+		<!--<button class="btn btn-primary btn-lg" ng-click="vm.viewTodo('create')">Create</button>-->
+	</div>
+	<div class="row">
+		<div class="input-group">
+			<input type="text" class="form-control" ng-model="vm.newListName" placeholder="Enter new todo list name">
+			<span class="input-group-btn">
+				<button class="btn btn-primary" ng-click="vm.add()" >Add</button>
+			</span>
+		</div>
+	</div>
+	<!-- TODO LIST -->
+</div>

@@ -1,0 +1,54 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'http-server' ]
+2 info using npm@1.1.33
+3 info using node@v0.8.1
+4 verbose node symlink C:\Program Files\nodejs\\node.exe
+5 verbose config file C:\Users\Vikram\.npmrc
+6 verbose config file C:\Program Files\nodejs\etc\npmrc
+7 verbose config file C:\Program Files\nodejs\node_modules\npm\npmrc
+8 verbose read json C:\Users\Vikram\AppData\Roaming\npm\package.json
+9 verbose read json C:\Users\Vikram\AppData\Roaming\npm\package.json
+10 verbose cache add [ 'http-server', null ]
+11 silly cache add name=undefined spec="http-server" args=["http-server",null]
+12 verbose parsed url { pathname: 'http-server',
+12 verbose parsed url   path: 'http-server',
+12 verbose parsed url   href: 'http-server' }
+13 verbose lock http-server C:\Users\Vikram\AppData\Roaming\npm-cache\ed6083074895cb1777e6521e30708719b0b40102-http-server.lock
+14 verbose addNamed [ 'http-server', '' ]
+15 verbose addNamed [ null, '' ]
+16 verbose lock http-server@ C:\Users\Vikram\AppData\Roaming\npm-cache\550353c61a3c10d38d4c8a20bf269735fde8eba0-http-server-.lock
+17 silly addNameRange { name: 'http-server', range: '', hasData: false }
+18 verbose url raw http-server
+19 verbose url resolving [ 'http://registry.npmjs.org/', './http-server' ]
+20 verbose url resolved http://registry.npmjs.org/http-server
+21 info retry registry request attempt 1 at 20:00:55
+22 http GET http://registry.npmjs.org/http-server
+23 info retry will retry, error on last attempt: Error: getaddrinfo ENOENT
+24 info retry registry request attempt 2 at 20:01:05
+25 http GET http://registry.npmjs.org/http-server
+26 info retry will retry, error on last attempt: Error: getaddrinfo ENOENT
+27 info retry registry request attempt 3 at 20:02:05
+28 http GET http://registry.npmjs.org/http-server
+29 error Error: getaddrinfo ENOENT
+29 error     at errnoException (dns.js:31:11)
+29 error     at Object.onanswer [as oncomplete] (dns.js:123:16)
+29 error  { [Error: getaddrinfo ENOENT] code: 'ENOTFOUND', errno: 'ENOTFOUND', syscall: 'getaddrinfo' }
+30 error You may report this log at:
+30 error     <http://github.com/isaacs/npm/issues>
+30 error or email it to:
+30 error     <npm-@googlegroups.com>
+31 error System Windows_NT 6.1.7601
+32 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "-g" "http-server"
+33 error cwd G:\TRAINING PROGRAMS\ANGULAR JS\programs\providers
+34 error node -v v0.8.1
+35 error npm -v 1.1.33
+36 error syscall getaddrinfo
+37 error code ENOTFOUND
+38 error message getaddrinfo ENOENT
+39 error errno ENOTFOUND
+40 error ENOTFOUND errno
+41 verbose exit [ 1, true ]

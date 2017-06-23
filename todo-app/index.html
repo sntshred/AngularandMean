@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<title>Node/Angular Todo App</title>
+		<!-- META -->
+		<meta charset="utf-8">
+		<!-- Optimize mobile viewport -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- load bootstrap -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<style>
+			html{
+				overflow-y:scroll;
+			}
+			body{
+				padding-top:50px;
+			}
+			#todo-list{
+				margin-bottom:30px;
+			}
+		</style>
+	</head>
+	<body ng-app="todoApp">
+		<div ui-view></div>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+		<script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script>
+		<script src="js/todoApp.js"></script>
+		<script src="js/utilsModule.js"></script>
+		<script src="js/todoDataService.js"></script>
+		<script src="js/todoTransactionService.js"></script>
+		<script src="js/viewController.js"></script>
+		<script src="js/editController.js"></script>
+	</body>
+</html>

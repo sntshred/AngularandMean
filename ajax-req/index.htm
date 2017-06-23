@@ -1,0 +1,100 @@
+<html>
+	<head>
+		<title>Angular JS Includes</title>
+		<style>
+			table, th , td {
+				border: 1px solid grey;
+				border-collapse: collapse;
+				padding: 5px;
+			}
+			table tr:nth-child(odd) {
+				background-color: #f2f2f2;
+			}
+			table tr:nth-child(even) {
+				background-color: #ffffff;
+			}
+		</style>
+		<link href="css/animation.css" rel="stylesheet" type="text/css"/>
+		<link href="css/table-style.css" rel="stylesheet" type="text/css"/>
+		<script src="../lib/angular-1.3.14/angular.js"></script>
+		<script src="../lib/angular-1.3.14/angular-animate.js"></script>		
+	</head>
+	<body>
+		<div ng-app="myApp" ng-controller="studentController">
+			<div class="tabular-wrapper">
+				<div class="title">
+					AngularJS Sample AJAX Application
+				</div>
+				<div class="table-wrapper">
+					<button ng-click="getData()">
+						GET DATA
+					</button>
+					<ul class="table">
+						<li class="row row-header">
+							<span>Name</span>
+							<span>Percentage</span>
+							<span>Roll NO</span>
+						</li>
+						<li class="row" ng-repeat="student in students">
+							<span ng-repeat="cell in student">{{cell}}</span>
+							<span>{{student.name}}</span>
+							<span>{{student.rollNo}}</span>
+							<span>{{student.Percentage}}</span>
+						</li>
+					</ul>
+				</div>
+				<br>
+				<div class="title">
+					ADD NEW STUDENT
+				</div>
+				<div class="table-wrapper">
+					<ul class="table">
+						<li class="row">
+							<span>Student Name</span>
+							<span>
+								<input type="text" ng-model="student.Name"/>
+							</span>
+						</li>
+						<li class="row">
+							<span>Percentage</span>
+							<span>
+								<input type="text" ng-model="student.Percentage"/>
+							</span>
+						</li>
+						<li class="row">
+							<span>Roll NO</span>
+							<span>
+								<input type="text" ng-model="student.RollNo"/>
+							</span>
+						</li>
+						<li>
+							<button ng-click="addStudent()">
+								ADD STUDENT
+							</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script>
+			angular.module("myApp",['ngAnimate'])
+			.controller("studentController",
+					function($scope,$http) {
+				$scope.students=[];
+				var url="http://localhost:8888/jsonp-ex/servlet/StudentData?data=abc&callback=JSON_CALLBACK";
+				//var url = "data.txt";
+				//$http(config)
+				$scope.getData= function(){
+					$http.get(url)
+					.success( function(response) { 
+						$scope.students = response;
+					})
+					.error(function(e,msg){});
+					$scope.addStudent = function(){
+						$scope.students.push($scope.student);
+					};
+				};				
+			});
+		</script>		
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<html>
+	<body ng-app="inDomainApp">
+		<table border=1 ng-controller="ajaxCtrl">
+			<tr>
+				<th colspan=3>STUDENT DETAILS<button ng-click="getData()">GET DATA</button></th>
+			</tr>
+			<tr>
+				<td>NAME</td>
+				<td>ROLL NO</td>
+				<td>PERCENTAGE</td>
+			</tr>
+			<tr ng-repeat="student in students">
+				<td>{{student.Name}}</td>
+				<td>{{student.RollNo}}</td>
+				<td>{{student.Percentage}}</td>
+			</tr>
+		</table>
+		<script src="../lib/angular-1.4.9/angular.min.js"></script>
+		<script>
+			angular.module("inDomainApp", [])
+			.controller("ajaxCtrl", function($scope, $http){
+				//var url = "data/student.json";
+				var url = "http://localhost:3000/students/all?callback=JSON_CALLBACK";
+				$scope.students = [];
+				$scope.getData = function(){
+					$http.jsonp(url)
+					.success(
+						function(response, status, config){
+							$scope.students = response;
+						}
+					)
+					.error(
+						function(xhr, status, err){
+							alert(status);
+						}
+					);
+				};
+			});
+		</script>
+	</body>
+</html>

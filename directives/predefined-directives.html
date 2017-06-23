@@ -1,0 +1,76 @@
+<html>
+	<head>
+		<script src="../js/angular.min.js"></script>
+	</head>
+	<body ng-app="myapp" ng-init="sortkeys=[{key: 'Ctrl+C', text: 'Copy a selected item'},
+										{key: 'Ctrl+X', text: 'Cut a selected item'},
+										{key: 'Ctrl+V', text: 'Paste a selected item'},
+										{key: 'Ctrl+Z', text: 'Undo an action'},
+										{key: 'Ctrl+Y', text: 'Redo that thing I just undid'},
+										{key: 'Ctrl+A', text: 'Select everything'},
+										{key: 'Ctrl+P', text: 'Print'}]">
+		<p>Please find list of windows OS short keys</p>
+		<select ng-model="sk">
+			<option ng-repeat="text in sortkeys" 
+			value="{{text.key}}">
+				{{text.text}}
+			</option>
+		</select>
+		<h2>SHORT KEY FOR SELECT TEXT IS <label ng-bind="sk"></label>
+		<div ng-controller="MyController" >
+			<div ng-click="doClick($event)" ng-hide="sc">Click here</div>
+			<div ng-dblclick="doDblClick($event)" ng-show="dc">Dbl click here</div>			
+			
+			<!-- <input type="file" custom-on-change="dispImg(this)"/> -->
+			<input ng-model="photo" onchange="angular.element(this).scope().dispImg(this)" type="file" accept="image/*" multiple />
+			<!-- <button  ng-click="dispImg($event)">Upload</button> -->
+			<img ng-src="{{imageSource}}" alt="Image not selected"/>
+		</div>
+		
+		<script>
+			var app=angular.module("myapp", []);
+			
+			app.directive('customOnChange', function() {
+				return {
+					restrict: 'A',
+					link: function (scope, element, attrs) {
+						var onChangeFunc = scope.$eval(attrs.customOnChange);
+						element.bind('change', onChangeFunc);
+					}
+				};
+			});
+			
+			app.controller("MyController", function($scope) {
+				$scope.doClick = function(event) {
+					//alert("clicked: " + event.clientX + ", " + event.clientY);
+					$scope.sc=!$scope.sc;
+					$scope.dc=!$scope.dc;
+				}
+				$scope.doDblClick = function(event) {
+					//alert("dbl clicked: " + event.clientX + ", " + event.clientY);
+					$scope.dc=!$scope.dc;
+					$scope.sc=!$scope.sc;
+				}
+				$scope.dispImg = function(element) {
+					//alert("fun");
+					var img = element.files;
+					if (img && img[0]) {
+						photofile = img[0];
+						var reader = new FileReader();
+						reader.onload = (function(theFile) {
+							return function(e) {
+								$scope.$apply(function(){
+									$scope.imageSource= e.target.result;
+									console.log("update time clicked");
+								});
+								//alert($scope.imageSource);
+							};
+						})(photofile);
+						reader.readAsDataURL(photofile);							
+						//$scope.apply;
+					}
+				}
+			});		
+		</script> 
+	</body>
+</html>

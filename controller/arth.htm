@@ -1,0 +1,73 @@
+<html>
+	<body ng-app="arthApp">
+		<div ng-controller="mathCtrl">
+			<h3>mathCtrl VIEW</h3>
+			ENTER A NUMBER : <input type="number" ng-model="user.a"/>
+			<br/>
+			ENTER B NUMBER : <input type="number" ng-model="user.b"/>
+			<br/>
+			<button ng-click="sum(user.a, user.b)"> + </button> |
+			<button ng-click="sub(user.a, user.b)"> - </button> |
+			<button ng-click="mul(user.a, user.b)"> * </button> |
+			<label id="v1"/>
+			<hr/>
+			RESULT : <span ng-bind="result"></span>
+		</div>
+		<hr/>
+		<div ng-controller="arthCtrl">
+			<h3>arthCtrl VIEW</h3>
+			ENTER A NUMBER : <input type="number" ng-model="user.a"/>
+			<br/>
+			ENTER B NUMBER : <input type="number" ng-model="user.b"/>
+			<br/>
+			<button ng-click="sum(user.a, user.b)"> + </button> |
+			<button ng-click="sub(user.a, user.b)"> - </button> |
+			<button ng-click="mul(user.a, user.b)"> * </button> |
+			<button ng-click="div(user.a, user.b)"> / </button>
+			<hr/>
+			RESULT : <span ng-bind="result"></span>
+		</div>
+		<script src="../lib/jquery-2.2.0.min.js"></script>
+		<script src="../lib/angular-1.4.9/angular.min.js"></script>
+		<script>
+			angular.module("arthApp", [])
+			.controller("mathCtrl", function($scope, $rootScope, $compile){
+				$rootScope.user = {
+					'a' : 0,
+					'b' : 0
+				};
+				$scope.result = 0;
+				var element = angular.element("<button ng-click='div(user.a, user.b)'> / </button>");
+				$compile(element)($scope);
+				$("#v1").append(element);
+				$scope.sum = function(a, b){
+					$scope.result = a + b;
+				};
+				$scope.sub = function(a, b){
+					$scope.result = a - b;
+				};
+				$scope.mul = function(a, b){
+					$scope.result = a * b;
+				};
+				$scope.div = function(a, b){
+					$scope.result = a / b;
+				};
+			})
+			.controller("arthCtrl", function($scope, $rootScope){
+				$scope.result = 0;
+				$scope.sum = function(a, b){
+					$scope.result = a + b;
+				};
+				$scope.sub = function(a, b){
+					$scope.result = a - b;
+				};
+				$scope.mul = function(a, b){
+					$scope.result = a * b;
+				};
+				$scope.div = function(a, b){
+					$scope.result = a / b;
+				};
+			});
+		</script>
+	</body>
+</html>

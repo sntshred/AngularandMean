@@ -1,0 +1,36 @@
+<html>
+	<body ng-app="myApp" ng-controller="myCtrl">
+		<form name="myForm" ng-submit="submit()" novalidate>
+			ENTER USER ID : <input type="email" name="mail" ng-model="user.email" required/>
+			<div ng-show="myForm.mail.$dirty && myForm.mail.$invalid" style="color:red;">
+				<div ng-show="myForm.mail.$error.email">
+					PLEASE PROVIDE VALID EMAIL ID
+				</div>
+				<div ng-show="myForm.mail.$error.required">
+					USER ID IS MANDATORY
+				</div>
+			</div>
+			<br/>
+			ENTER MOBILE NO: <input type="number" name="no" ng-model="user.no" required/>
+			<br/>
+			<div ng-show="myForm.no.$dirty && myForm.no.$invalid" style="color:red;">
+				<div ng-show="myForm.no.$error.number">
+					PLEASE PROVIDE VALID MOBILE NO
+				</div>
+				<div ng-show="myForm.no.$error.required">
+					MOBILE NO IS MANDATORY
+				</div>
+			</div>
+			<button ng-disabled="myForm.$invalid">submit</button>
+		</form>
+		<script src="../lib/angular-1.4.9/angular.min.js"></script>
+		<script>
+			angular.module("myApp", [])
+			.controller("myCtrl", function($scope){
+				$scope.submit = function(){
+					alert("clicked");
+				};
+			});
+		</script>
+	</body>
+</html>

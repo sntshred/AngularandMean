@@ -1,0 +1,14 @@
+<html>
+	<body>
+		ENTER TEXT : <input type="text" id="m1" onkeyup="bind()"/>
+		<br/>
+		VIEW TEXT : <label id="v1"></label>
+		<script>
+			function bind(){
+				var model = document.getElementById("m1");
+				var view = document.getElementById("v1");
+				view.innerHTML = model.value;
+			};
+		</script>
+	</body>
+</html>

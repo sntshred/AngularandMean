@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<script language="JavaScript" type="text/javascript">
+			function loadPage(strURL) {	
+					// Mozilla, Safari, ...
+				if (window.XMLHttpRequest) {
+					xmlHttp = new XMLHttpRequest();
+				}
+				 // IE
+				else if (window.ActiveXObject) {
+					xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xmlHttp.onreadystatechange = function(){
+					if(xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
+						var x=xmlHttp.responseText;
+						// alert(x);
+						var container = document.getElementById('contrainer');
+						container.innerHTML="";
+						container.innerHTML=x;
+					}
+				};
+				xmlHttp.open("GET", strURL, true);
+				xmlHttp.send(strURL);					
+			}
+		</script>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><input type="button" 
+					onclick="loadPage('view/login.pl')" value="LOGIN PAGE"/></td>
+				<td><input type="button" 
+					onclick="loadPage('view/registration.pl')" value="REGISTRATION PAGE"/></td>
+			</tr>
+		</table>
+		<br><br>
+		<div id="contrainer" style="border:1px solid red;"/>
+	</body>
+</html>
